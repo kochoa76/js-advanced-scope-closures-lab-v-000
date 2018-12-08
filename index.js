@@ -1,32 +1,33 @@
 
-function produceDrivingRange(givenRange){
-    return function(startingBlock, endingBlock) {
-      let start = parseInt(startingBlock)
-      let end= parseInt(endingBlock)
+function produceDrivingRange(givenRange) {
+  return function(startRange, endRange){
+    let startNumRange = parseInt(startRange)
+    let endNumRange= parseInt(endRange)
 
-      let blockDistance = Math.abs(end - start)
-      let distance = givenRange - blockDistance
-      if (distance > 0){
-          return `within range by ${(distance)}`;
-        }
-        else {
-          return `${Math.abs(distance)} blocks out of range`
-        }
+    let distance = Math.abs(endNumRange - startNumRange)
+    let rangeDistance = givenRange -distance
+    if( rangeDistance > 0) {
+      return `within range by ${(rangeDistance)}`
     }
+    else {
+      return `${Math.abs(rangeDistance)} blocks out of range`
+    }
+  }
 }
 
-function produceTipCalculator(tip) {
-    return function(fare) {
-        return fare * tip
-    }
+function produceTipCalculator(fare) {
+  return function(tip) {
+    return fare * tip
+  }
 }
 
-function createDriver() {
-    let DriverId = 0
-    return class {
-      constructor(name){
-          this.name = name
-          this.id = ++DriverId
-      }
+
+function createDriver(name){
+  let driverId = 0
+  return class Driver {
+    constructor(name){
+      this.name = name
+      this.id = ++driverId
     }
+  }
 }
